@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Easter Egg Hunt!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:"Comic Sans MS",cursive,sans-serif;background:linear-gradient(120deg,#7ec8ff 0%,#ffffff 70%);background-size:200% 200%;animation:sky 10s ease-in-out infinite;text-align:center;overflow-x:hidden;padding:2rem;}
+@keyframes sky{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.clue-box{background:#ffd6e8;border:2px dashed #ff69b4;border-radius:15px;max-width:500px;margin:2rem auto;padding:2rem;color:#8b0055}
+.hidden{display:none}
+input,button{font-size:1.1rem;padding:.5rem 1rem;border:2px solid #ff69b4;border-radius:10px}
+button{background:#ffb6c1;color:#8b0055;cursor:pointer}
+#countdown,#questionTimer{font-weight:bold;color:#d63384}
+#feedback{color:#d92332;font-size:1.4em;font-weight:bold;margin-top:.5rem}
+#clueText{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Trebuchet MS",Arial,sans-serif;font-size:1.05em;letter-spacing:.4px;line-height:1.35em}
+.animal{position:fixed;bottom:10px;width:90px;height:90px;background-size:cover;background-repeat:no-repeat;pointer-events:none;z-index:20;animation:run 8s linear infinite}
+@keyframes run{0%{left:-100px}100%{left:calc(100vw + 100px)}}
+#bunny{background-image:url('/img/bunny.png')}
+#horse{background-image:url('/img/horse.png')}
+#confetti-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999}
+</style>
+</head>
+<body>
+<h1>Welcome to the Easter Egg Hunt 🐣</h1>
+<div id="countdown">Time left: 60:00 <button onclick="togglePause()">⏸️</button></div>
+
+<div id="intro" class="clue-box">
+  <p>Hey girls! Ready to start your magical Easter adventure? 💐🐰</p>
+  <button id="startBtn">Let’s go!</button>
+  <p id="audioWarn" class="hidden" style="color:#d63384;margin-top:1rem;cursor:pointer">🔊 Tap here to unmute</p>
+</div>
+
+<div id="clue" class="clue-box hidden">
+  <div id="questionTimer">Time left for this clue: 5:00</div>
+  <h2>Location <span id="stepNum">1</span> of <span id="totalSteps">19</span></h2>
+  <p id="preMessage" class="hidden" style="font-size:1.15em;font-weight:bold;"></p>
+  <p id="clueText"></p>
+  <input id="passInput" placeholder="Enter password">
+  <br><button id="submitBtn" onclick="checkPassword()">Submit</button>
+  <button id="finishBtn" class="hidden" onclick="victory()">Finish!</button>
+  <p id="feedback" class="hidden">Try again!</p>
+</div>
+
+<div id="success" class="clue-box hidden">
+  <h2>You did it! 🏆</h2>
+  <p>Get ready for the next clue…</p>
+  <button onclick="nextClue()">Next clue</button>
+</div>
+
+<canvas id="confetti-canvas" class="hidden"></canvas>
+<div id="bunny" class="animal"></div>
+<div id="horse" class="animal" style="animation-delay:4s"></div>
+
+<!-- AUDIO -->
+<audio id="bgMusic" src="/audio/bg.mp3" preload="auto" loop></audio>
+<audio id="hopSound" src="/audio/hop.mp3" preload="auto"></audio>
+<audio id="correctSound" src="/audio/correct.mp3" preload="auto"></audio>
+<audio id="buzzerSound" src="/audio/buzzer.mp3" preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+window.onerror=(m,u,l,c,e)=>console.error('[ERROR]',m,'@',l+':'+c);
+const log=(...a)=>console.log('[HUNT]',...a);
+
+const clues=[{text:"I hide below where meals begin, with metal skins and echoes thin. I do not feed, yet help prepare, the clatter of work is common there. Not on the bench, nor in plain sight—but where the heavy things sleep at night.",pass:"237648"},
+{text:"I move with power, but not on feet, I trim the earth, my task complete. I wait in stillness when not in use, but when I'm needed, I cut straight through. Not where you walk, but where you steer, find me hidden, sharp and near.",pass:"176356"},
+{text:"I sit by the place where guests arrive, though I hold no flame, I still survive. I'm meant to glow but stay unlit, by the front door, I quietly sit.",pass:"638265"},
+{text:"I stand between a splash and a stroll, a silent guard with a watery role. Not quite a gate, not quite a wall, yet without me, chaos might befall.",pass:"983765"},
+{text:"I stand with doors, though not to roam, a sentinel in a place you own. Four panels guard what's tucked away, amongst the tools, I quietly stay. Tall and narrow, a space for more, look where items are stored for sure.",pass:"187236"},
+{text:"I lie in wait, yet never rest, a surface stretched, yet not a nest. With every spring, I rise and fall, a place to leap, yet bound by walls. Not sky, nor ground, but in between, where gravity's grip feels less serene.",pass:"225416"},
+{text:"I'm not the one that's dark as night, I'm the one with a softer light. I carry you from place to place, though not a race car, I hold that grace. Look for the one with a deeper hue, that's where your next clue waits for you.",pass:"651782"},
+{text:"I stand in wait, though not for cold, when summer calls, my fire takes hold. I breathe in heat, then give it out, a feast begins, with smoke and shout. I'm not the oven, but the flame's my friend, look where the grill and fire blend.",pass:"672897"},
+{text:"A banquet awaits, but not where you dine, no pots, no pans, no vintage wine. For one who slinks on silent feet, this is the place they find their treat. Where humans might not think to snack, yet daily rituals bring them back.",pass:"466378"},
+{text:"I stand with a door, yet not for you, a keeper of things, but not for view. I wait by the road, in silent grace, where things arrive, but never stay in place. Look for me where others depart, I'm small and humble, but play my part.",pass:"873654"},
+{text:"I come alive when the world's on screen, a window to places you've never seen. I speak in sound, yet never shout, through flickers and frames, I show each bout. Look for the one that brings you near—where stories unfold, your next clue's clear.",pass:"998736"},
+{text:"Stacked in silence, side by side, they guard their secrets deep inside. Some hold tools, or bits and ends, a mix of memories, means, and bends. Look to the shelf that's near the floor—The box you seek is one of four.",pass:"652371"},
+{text:"I sit in wait, where feet do tread, I shield what's hidden just ahead. Though I may seem simple, plain, and flat, look beneath me for what's at bat. Not far from the place where steps begin, your next clue waits, tucked safely in.",pass:"628376"},
+{text:"I wait with patience, silent, still, where warmth is born by human will. A door you'll find, but not for going, behind it, magic's subtly glowing. No flames, no fire, yet heat does rise, where cold things transform before your eyes.",pass:"873652"},
+{text:"I am not warm, yet full of life, I hum through day and quiet night. Within my walls, the world is paused, preserved in stillness, rarely flawed. Seek what waits in breathless rest—the clue lies where the cold is best.",pass:"337625"},
+{text:"I stand with doors, but not to roam, a place for items, a storage home. Unscramble these letters, take your time: F U F B E T  T I N U — the answer you will find!",pass:"635526"},
+{text:"Not hidden in plain sight, but often near, where paws tread softly, and love is clear. Look for the one that answers when called, the number you need is worn, not scrawled.",pass:"967255"},
+{text:"I listen closely, yet never speak, until you ask the words you seek. I may not move, but I'm quite smart, I answer questions, play my part. Look for the one who hears it all, your next clue's where I stand tall.",pass:"761523"},
+{text:"Begin at the end, or is it the start? A circle completed, a clever art. The journey began with a simple glance, at something flat — not left to chance. They dress the table but do not feed, among their layers, you'll find what you need.",pass:"Money"}];
+
+let step=0,totalTime=3600,questionTime=300,totalTimer,questionTimer,isPaused=false,totalBuzzed=false;
+
+/* helpers */
+const $=id=>document.getElementById(id);
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const safePlay=a=>{a.muted=false;a.play().catch(()=>{})};
+const safeLoop=(s,m)=>setInterval(()=>!isPaused&&safePlay(s),m);
+
+/* timers */
+function updateTotal(){ $('countdown').innerHTML=`Time left: ${fmt(totalTime)} <button onclick="togglePause()">${isPaused?'▶️':'⏸️'}</button>`;}
+function startTotal(){updateTotal();totalTimer=setInterval(()=>{
+ if(isPaused)return;
+ if(--totalTime===10&&!totalBuzzed){totalBuzzed=true;safePlay($('buzzerSound'));}
+ if(totalTime<=0)return endGame("Time’s up! ⏰");
+ updateTotal();
+},1000);}
+function updateQ(s){$('questionTimer').textContent="Time left for this clue: "+fmt(s);}
+function startQ(){let t=questionTime;updateQ(t);clearInterval(questionTimer);
+ questionTimer=setInterval(()=>{if(isPaused)return;if(--t<=0)return endGame("Out of time for this clue! ⏰");updateQ(t);},1000);}
+
+/* flow */
+function startHunt(){
+ log('startHunt');$('intro').classList.add('hidden');$('clue').classList.remove('hidden');
+ (new(AudioContext||webkitAudioContext)()).resume().catch(()=>{});
+ startTotal();showClue();
+ $('bgMusic').play().catch(()=>$('audioWarn').classList.remove('hidden'));
+ safeLoop($('hopSound'),20000);kickOffHop($('bunny'),0);kickOffHop($('horse'),4000);
+}
+function kickOffHop(el,d){el.style.left='-120px';setTimeout(()=>{el.style.transition='left 1000ms linear';el.style.left='110vw'},d);}
+function showClue(){
+ log('showClue step',step);
+ if(!clues[step]){log('no clue -> victory');victory();return;}
+ $('stepNum').textContent=step+1;$('totalSteps').textContent=clues.length;
+ $('clueText').textContent=clues[step].text;$('passInput').value='';$('feedback').classList.add('hidden');$('success').classList.add('hidden');$('clue').classList.remove('hidden'); 
+
+ const final=(step===clues.length-1);
+ $('preMessage').classList.toggle('hidden',!final);$('preMessage').textContent=final?"Congratulations girls on getting to the end!!":"";
+ $('passInput').classList.toggle('hidden',final);$('submitBtn').classList.toggle('hidden',final);$('finishBtn').classList.toggle('hidden',!final);
+ if(!final)startQ();else updateQ(questionTime);
+}
+function checkPassword(){
+ const ans=$('passInput').value.trim().toLowerCase();
+ log('checkPassword',ans,'expect',clues[step].pass);
+ if(ans===clues[step].pass.toLowerCase()){
+  safePlay($('correctSound'));confetti({particleCount:80,spread:80});
+  clearInterval(questionTimer);$('clue').classList.add('hidden');$('success').classList.remove('hidden');
+ }else $('feedback').classList.remove('hidden');
+}
+let clickCount=0;
+function nextClue(){
+ clickCount++;log('nextClue click',clickCount,'step',step);
+ if(step+1<clues.length){step++;showClue();}else victory();
+}
+function victory(){clearInterval(totalTimer);clearInterval(questionTimer);
+ document.body.innerHTML='<h1>You found all the clues! 🎉🐇</h1><p>Enjoy your surprise! 🍬🍭</p>';confetti({particleCount:250,spread:120});}
+function endGame(msg){clearInterval(totalTimer);clearInterval(questionTimer);document.body.innerHTML=`<h1>${msg}</h1><p>Try again next time!</p>`;}
+function togglePause(){isPaused=!isPaused;updateTotal();}
+
+$('startBtn').addEventListener('click',startHunt);
+$('audioWarn').addEventListener('click',()=>{safePlay($('bgMusic'));$('audioWarn').classList.add('hidden');});
+</script>
+</body>
+</html>
