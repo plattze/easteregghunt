@@ -6,9 +6,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;font-family:"Comic Sans MS",cursive,sans-serif;background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 30%,#a6c1ee 60%,#ffd6e8 100%);background-size:300% 300%;animation:bgShift 12s ease-in-out infinite;text-align:center;overflow-x:hidden;padding:0;min-height:100vh;color:#4a1942}
+body{margin:0;font-family:"Comic Sans MS",cursive,sans-serif;background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 30%,#a6c1ee 60%,#ffd6e8 100%);background-size:300% 300%;animation:bgShift 12s ease-in-out infinite;text-align:center;overflow-x:hidden;padding:0;min-height:100vh;color:#4a1942;transition:background .6s ease,color .6s ease}
 @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .hidden{display:none!important}
+
+/* ===== DARK THEME (Game 2) ===== */
+body.dark-theme{background:linear-gradient(135deg,#0d0d0d 0%,#1a0a2e 30%,#16213e 60%,#0f3460 100%);background-size:300% 300%;color:#c4b5d4}
+body.dark-theme .card{background:rgba(20,10,35,.92);box-shadow:0 8px 32px rgba(0,0,0,.5);color:#c4b5d4}
+body.dark-theme .card-clue{border-left-color:#8b0000}
+body.dark-theme .card-quiz{border-left-color:#6a0dad}
+body.dark-theme .card-success{border-left-color:#2e7d32}
+body.dark-theme .card-setup{border-left-color:#4a0e78}
+body.dark-theme #stickyHeader{background:rgba(10,5,20,.9);border-bottom-color:rgba(139,0,0,.4)}
+body.dark-theme #teamBanner img{border-color:#8b0000}
+body.dark-theme #teamBanner span{color:#ff4444}
+body.dark-theme #progressBar{background:linear-gradient(90deg,#8b0000,#6a0dad,#4a0e78)}
+body.dark-theme #progressWrap{background:rgba(255,255,255,.1)}
+body.dark-theme #progressText{color:#ff6666}
+body.dark-theme #timerRow .timer-text{color:#ff4444}
+body.dark-theme .timer-btn{background:rgba(139,0,0,.2);color:#ff6666}
+body.dark-theme .step-label{color:#9b59b6}
+body.dark-theme #clueText{color:#c4b5d4}
+body.dark-theme .quiz-question{color:#c4b5d4}
+body.dark-theme .input-row input{background:rgba(30,15,50,.9);border-color:#4a0e78;color:#e0d0f0}
+body.dark-theme .input-row input:focus{border-color:#8b0000;box-shadow:0 0 0 3px rgba(139,0,0,.3)}
+body.dark-theme .input-row input::placeholder{color:#7a6b8a}
+body.dark-theme .btn-primary{background:linear-gradient(135deg,#8b0000,#b30000);box-shadow:0 4px 15px rgba(139,0,0,.4)}
+body.dark-theme .btn-go{background:linear-gradient(135deg,#6a0dad,#4a0e78);box-shadow:0 4px 15px rgba(106,13,173,.4)}
+body.dark-theme .btn-success{background:linear-gradient(135deg,#2e7d32,#388e3c);box-shadow:0 4px 15px rgba(46,125,50,.4)}
+body.dark-theme .btn-finish{background:linear-gradient(135deg,#8b0000,#ff4444)}
+body.dark-theme .quiz-btn:nth-child(1){background:rgba(139,0,0,.2);border-color:#8b0000;color:#ff6666}
+body.dark-theme .quiz-btn:nth-child(2){background:rgba(106,13,173,.2);border-color:#6a0dad;color:#bf7fff}
+body.dark-theme .quiz-btn:nth-child(3){background:rgba(46,125,50,.2);border-color:#2e7d32;color:#66bb6a}
+body.dark-theme .quiz-btn:nth-child(4){background:rgba(255,140,0,.15);border-color:#ff8c00;color:#ffa726}
+body.dark-theme #preMessage{color:#ff4444}
+body.dark-theme #feedback{color:#ff4444}
+body.dark-theme h1.page-title{color:#e0d0f0;text-shadow:2px 2px 8px rgba(139,0,0,.5)}
+body.dark-theme h2{color:#c4b5d4}
+body.dark-theme #teamNameInput{background:rgba(30,15,50,.9);border-color:#4a0e78;color:#e0d0f0}
+body.dark-theme #teamNameInput:focus{border-color:#8b0000;box-shadow:0 0 0 3px rgba(139,0,0,.3)}
+body.dark-theme #selfiePlaceholder{border-color:#6a0dad;background:rgba(106,13,173,.15)}
+body.dark-theme #selfiePreview{border-color:#6a0dad}
+body.dark-theme .overlay{background:linear-gradient(135deg,#0d0d0d 0%,#1a0a2e 30%,#16213e 60%,#0f3460 100%);background-size:300% 300%;animation:bgShift 8s ease-in-out infinite}
+body.dark-theme #muteBtn{background:rgba(20,10,35,.9);color:#c4b5d4}
+
+/* Fog overlay for dark theme */
+body.dark-theme::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 100%,rgba(106,13,173,.15) 0%,transparent 70%);animation:fogDrift 10s ease-in-out infinite}
+@keyframes fogDrift{0%,100%{opacity:.4}50%{opacity:.8}}
 
 /* Splash */
 #splash{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,#667eea 0%,#764ba2 30%,#f093fb 60%,#fbc2eb 100%);background-size:300% 300%;animation:bgShift 8s ease-in-out infinite;cursor:pointer}
@@ -18,8 +62,44 @@ body{margin:0;font-family:"Comic Sans MS",cursive,sans-serif;background:linear-g
 #splash p{font-size:1.4rem;color:rgba(255,255,255,.9);animation:pulse 1.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(1.05)}}
 
+/* Game Select Screen */
+#gameSelect{display:none;padding:2rem 1rem 4rem}
+#gameSelect h1{font-size:2.2rem;color:#fff;text-shadow:2px 2px 6px rgba(0,0,0,.2);margin-bottom:.3rem}
+#gameSelect .subtitle{font-size:1.1rem;color:rgba(255,255,255,.8);margin-bottom:2rem}
+.game-cards{display:flex;flex-direction:column;gap:1.5rem;max-width:480px;margin:0 auto}
+.game-card{border-radius:24px;padding:2rem 1.5rem;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.game-card:active{transform:scale(.97)}
+.game-card-1{background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(255,240,245,.95));border:3px solid #ff69b4;box-shadow:0 8px 32px rgba(255,105,180,.2)}
+.game-card-1:hover{box-shadow:0 12px 40px rgba(255,105,180,.35);transform:translateY(-2px)}
+.game-card-2{background:linear-gradient(135deg,rgba(20,10,35,.95),rgba(26,10,46,.95));border:3px solid #6a0dad;box-shadow:0 8px 32px rgba(106,13,173,.3);color:#c4b5d4}
+.game-card-2:hover{box-shadow:0 12px 40px rgba(106,13,173,.45);transform:translateY(-2px)}
+.game-card-2.locked{cursor:not-allowed;opacity:.7;filter:grayscale(.3)}
+.game-card-2.locked:hover{transform:none;box-shadow:0 8px 32px rgba(106,13,173,.3)}
+.game-card-2.locked:active{transform:none}
+.game-card .game-emoji{font-size:4rem;margin-bottom:.5rem}
+.game-card .game-title{font-size:1.5rem;font-weight:bold;margin-bottom:.3rem}
+.game-card-1 .game-title{color:#d63384}
+.game-card-2 .game-title{color:#bf7fff}
+.game-card .game-desc{font-size:1rem;line-height:1.4}
+.game-card-1 .game-desc{color:#8b0055}
+.game-card-2 .game-desc{color:#9b8abf}
+.game-card .game-time{font-size:.9rem;font-weight:bold;margin-top:.7rem;padding:.4rem .8rem;border-radius:12px;display:inline-block}
+.game-card-1 .game-time{background:rgba(255,105,180,.15);color:#d63384}
+.game-card-2 .game-time{background:rgba(106,13,173,.25);color:#bf7fff}
+.game-lock-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,5,20,.7);border-radius:21px;backdrop-filter:blur(3px);z-index:2}
+.game-lock-overlay .lock-icon{font-size:3rem;margin-bottom:.5rem}
+.game-lock-overlay .lock-text{font-size:1.1rem;color:#bf7fff;font-weight:bold}
+.game-card .game-badge{position:absolute;top:12px;right:12px;font-size:.8rem;font-weight:bold;padding:.3rem .7rem;border-radius:10px}
+.game-card-1 .game-badge{background:#ff69b4;color:#fff}
+.game-card-2 .game-badge{background:#6a0dad;color:#fff}
+.game-card .completed-badge{position:absolute;top:12px;left:12px;font-size:.85rem;font-weight:bold;padding:.3rem .7rem;border-radius:10px;background:#4caf50;color:#fff}
+
 /* Mute button */
 #muteBtn{position:fixed;top:12px;right:12px;z-index:9998;font-size:1.6rem;width:52px;height:52px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);box-shadow:0 2px 10px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+
+/* Back to games button */
+#backBtn{position:fixed;top:12px;left:12px;z-index:9998;font-size:1rem;padding:.5rem 1rem;border-radius:14px;border:none;background:rgba(255,255,255,0.9);box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;font-family:inherit;font-weight:bold;color:#666;display:none}
+body.dark-theme #backBtn{background:rgba(20,10,35,.9);color:#9b8abf}
 
 /* Sticky header */
 #stickyHeader{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:.6rem 1rem;border-bottom:2px solid rgba(255,105,180,.3);display:none}
@@ -101,10 +181,114 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
 .success-emoji{font-size:4rem;margin:.5rem 0}
 
 /* Animals */
-.animal{position:fixed;bottom:10px;width:90px;height:90px;background-size:cover;background-repeat:no-repeat;pointer-events:none;z-index:20;animation:run 8s linear infinite}
-@keyframes run{0%{left:-100px}100%{left:calc(100vw + 100px)}}
-#bunny{background-image:url('/img/bunny.png')}
-#horse{background-image:url('/img/horse.png')}
+.animal{position:fixed;bottom:10px;pointer-events:none;z-index:20;font-size:3rem;line-height:1;opacity:.85}
+.animal.a-bunny{animation:runBunny 10s linear infinite}
+.animal.a-chick{animation:runChick 13s linear infinite;font-size:2rem;bottom:8px}
+.animal.a-egg{animation:rollEgg 15s linear infinite;font-size:2.2rem;bottom:6px}
+@keyframes runBunny{
+ 0%{left:-60px;transform:translateY(0) scaleX(-1)}
+ 5%{transform:translateY(-25px) scaleX(-1)}
+ 10%{transform:translateY(0) scaleX(-1)}
+ 15%{transform:translateY(-25px) scaleX(-1)}
+ 20%{transform:translateY(0) scaleX(-1)}
+ 25%{transform:translateY(-25px) scaleX(-1)}
+ 30%{transform:translateY(0) scaleX(-1)}
+ 35%{transform:translateY(-25px) scaleX(-1)}
+ 40%{transform:translateY(0) scaleX(-1)}
+ 45%{transform:translateY(-25px) scaleX(-1)}
+ 50%{transform:translateY(0) scaleX(-1)}
+ 55%{transform:translateY(-25px) scaleX(-1)}
+ 60%{transform:translateY(0) scaleX(-1)}
+ 65%{transform:translateY(-25px) scaleX(-1)}
+ 70%{transform:translateY(0) scaleX(-1)}
+ 75%{transform:translateY(-25px) scaleX(-1)}
+ 80%{transform:translateY(0) scaleX(-1)}
+ 85%{transform:translateY(-25px) scaleX(-1)}
+ 90%{transform:translateY(0) scaleX(-1)}
+ 95%{transform:translateY(-25px) scaleX(-1)}
+ 100%{left:calc(100vw + 60px);transform:translateY(0) scaleX(-1)}
+}
+@keyframes runChick{
+ 0%{left:-40px;transform:translateY(0)}
+ 4%{transform:translateY(-8px) rotate(-5deg)}
+ 8%{transform:translateY(0) rotate(5deg)}
+ 12%{transform:translateY(-8px) rotate(-5deg)}
+ 16%{transform:translateY(0) rotate(5deg)}
+ 20%{transform:translateY(-8px) rotate(-5deg)}
+ 24%{transform:translateY(0) rotate(5deg)}
+ 28%{transform:translateY(-8px) rotate(-5deg)}
+ 32%{transform:translateY(0) rotate(5deg)}
+ 36%{transform:translateY(-8px) rotate(-5deg)}
+ 40%{transform:translateY(0) rotate(5deg)}
+ 44%{transform:translateY(-8px) rotate(-5deg)}
+ 48%{transform:translateY(0) rotate(5deg)}
+ 52%{transform:translateY(-8px) rotate(-5deg)}
+ 56%{transform:translateY(0) rotate(5deg)}
+ 60%{transform:translateY(-8px) rotate(-5deg)}
+ 64%{transform:translateY(0) rotate(5deg)}
+ 68%{transform:translateY(-8px) rotate(-5deg)}
+ 72%{transform:translateY(0) rotate(5deg)}
+ 76%{transform:translateY(-8px) rotate(-5deg)}
+ 80%{transform:translateY(0) rotate(5deg)}
+ 84%{transform:translateY(-8px) rotate(-5deg)}
+ 88%{transform:translateY(0) rotate(5deg)}
+ 92%{transform:translateY(-8px) rotate(-5deg)}
+ 96%{transform:translateY(0) rotate(5deg)}
+ 100%{left:calc(100vw + 40px);transform:translateY(0)}
+}
+@keyframes rollEgg{
+ 0%{left:-40px;transform:rotate(0deg)}
+ 100%{left:calc(100vw + 40px);transform:rotate(720deg)}
+}
+/* Dark theme animals */
+body.dark-theme .animal.a-bunny,body.dark-theme .animal.a-chick,body.dark-theme .animal.a-egg{display:none}
+.animal.a-ghost{display:none;animation:floatGhost 12s linear infinite;font-size:3rem;bottom:auto;top:15%}
+.animal.a-bat{display:none;animation:flyBat 9s linear infinite;font-size:2.2rem;bottom:auto;top:8%}
+.animal.a-spider{display:none;animation:dropSpider 14s linear infinite;font-size:2rem;bottom:auto;top:0;left:50%}
+body.dark-theme .animal.a-ghost,body.dark-theme .animal.a-bat,body.dark-theme .animal.a-spider{display:block}
+@keyframes floatGhost{
+ 0%{left:-60px;transform:translateY(0)}
+ 10%{transform:translateY(-30px)}
+ 20%{transform:translateY(10px)}
+ 30%{transform:translateY(-20px)}
+ 40%{transform:translateY(5px)}
+ 50%{transform:translateY(-25px)}
+ 60%{transform:translateY(10px)}
+ 70%{transform:translateY(-15px)}
+ 80%{transform:translateY(5px)}
+ 90%{transform:translateY(-20px)}
+ 100%{left:calc(100vw + 60px);transform:translateY(0)}
+}
+@keyframes flyBat{
+ 0%{left:calc(100vw + 40px);transform:translateY(0) scaleX(-1)}
+ 10%{transform:translateY(-20px) scaleX(-1)}
+ 20%{transform:translateY(15px) scaleX(-1)}
+ 30%{transform:translateY(-25px) scaleX(-1)}
+ 40%{transform:translateY(10px) scaleX(-1)}
+ 50%{transform:translateY(-15px) scaleX(-1)}
+ 60%{transform:translateY(20px) scaleX(-1)}
+ 70%{transform:translateY(-10px) scaleX(-1)}
+ 80%{transform:translateY(15px) scaleX(-1)}
+ 90%{transform:translateY(-20px) scaleX(-1)}
+ 100%{left:-40px;transform:translateY(0) scaleX(-1)}
+}
+@keyframes dropSpider{
+ 0%{top:-30px;opacity:0}
+ 5%{opacity:.7}
+ 15%{top:40%}
+ 25%{top:35%}
+ 35%{top:45%}
+ 45%{top:38%}
+ 55%{top:42%}
+ 70%{top:40%;opacity:.7}
+ 85%{top:40%;opacity:.7}
+ 95%{opacity:0}
+ 100%{top:-30px;opacity:0}
+}
+
+/* Floating spooky particles for dark theme */
+body.dark-theme .spooky-particle{position:fixed;pointer-events:none;z-index:2;font-size:1.5rem;opacity:.3;animation:floatUp 8s linear infinite}
+@keyframes floatUp{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:.3}90%{opacity:.3}100%{transform:translateY(-10vh) rotate(360deg);opacity:0}}
 
 /* Confetti */
 #confetti-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999}
@@ -114,6 +298,48 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
 .overlay h1{font-size:2.5rem;color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,.2);margin-bottom:1rem}
 .overlay p{font-size:1.4rem;color:rgba(255,255,255,.9)}
 .overlay .big-emoji{font-size:6rem;margin:1rem 0}
+.overlay .btn{margin-top:1.5rem}
+
+/* Sudoku */
+.sudoku-grid{display:grid;grid-template-columns:repeat(4,60px);gap:0;margin:1rem auto;width:fit-content;border:3px solid #4a1942}
+.sudoku-cell{width:60px;height:60px;text-align:center;font-size:1.5rem;font-weight:bold;border:1px solid #ccc;outline:none;font-family:inherit;background:#fff;color:#4a1942;padding:0}
+.sudoku-cell.given{background:#f0e6ff;color:#6a1b9a;cursor:default}
+.sudoku-cell:focus{background:#fff9c4;border-color:#a18cd1}
+.sudoku-cell.s-right{border-right:3px solid #4a1942}
+.sudoku-cell.s-bottom{border-bottom:3px solid #4a1942}
+body.dark-theme .sudoku-grid{border-color:#8b0000}
+body.dark-theme .sudoku-cell{background:rgba(30,15,50,.9);color:#e0d0f0;border-color:#4a0e78}
+body.dark-theme .sudoku-cell.given{background:rgba(106,13,173,.3);color:#bf7fff}
+body.dark-theme .sudoku-cell:focus{background:rgba(139,0,0,.2);border-color:#8b0000}
+body.dark-theme .sudoku-cell.s-right{border-right-color:#8b0000}
+body.dark-theme .sudoku-cell.s-bottom{border-bottom-color:#8b0000}
+
+/* Crossword */
+.crossword-wrap{margin:1rem auto;width:fit-content}
+.crossword-grid{display:inline-grid;gap:0;border:2px solid #4a1942}
+.crossword-cell{width:44px;height:44px;position:relative;border:1px solid #ccc;background:#fff}
+.crossword-cell.black{background:#4a1942;border-color:#4a1942}
+.crossword-cell input{width:100%;height:100%;border:none;text-align:center;font-size:1.2rem;font-weight:bold;text-transform:uppercase;outline:none;background:transparent;font-family:inherit;color:#4a1942;padding:0}
+.crossword-cell input:focus{background:#fff9c4}
+.crossword-num{position:absolute;top:1px;left:3px;font-size:.55rem;color:#888;pointer-events:none;z-index:1;line-height:1}
+.crossword-clues{text-align:left;max-width:400px;margin:1rem auto 0;font-size:.95rem;line-height:1.6}
+.crossword-clues h4{margin:.8rem 0 .3rem;color:#a18cd1;font-size:1rem}
+body.dark-theme .crossword-grid{border-color:#8b0000}
+body.dark-theme .crossword-cell{border-color:#4a0e78;background:rgba(30,15,50,.9)}
+body.dark-theme .crossword-cell.black{background:#0d0d0d;border-color:#0d0d0d}
+body.dark-theme .crossword-cell input{color:#e0d0f0}
+body.dark-theme .crossword-cell input:focus{background:rgba(139,0,0,.2)}
+body.dark-theme .crossword-num{color:#7a6b8a}
+body.dark-theme .crossword-clues h4{color:#bf7fff}
+
+/* Jumpscare */
+.scare-overlay{position:fixed;inset:0;z-index:9500;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;color:#ccc;padding:2rem;transition:background .08s}
+.scare-text{font-size:1.6rem;font-family:"Comic Sans MS",cursive,sans-serif;text-align:center;line-height:1.8;animation:scarePulse 2s ease-in-out infinite}
+@keyframes scarePulse{0%,100%{opacity:.9;text-shadow:0 0 10px rgba(139,0,0,.3)}50%{opacity:.4;text-shadow:0 0 20px rgba(139,0,0,.6)}}
+.scare-face{font-size:14rem;display:none;animation:scareJump .25s ease-out forwards;filter:drop-shadow(0 0 40px rgba(255,0,0,.8))}
+@keyframes scareJump{0%{transform:scale(0) rotate(-15deg);opacity:0}60%{transform:scale(1.4) rotate(5deg);opacity:1}100%{transform:scale(1.1) rotate(0);opacity:1}}
+@keyframes screenShake{0%,100%{transform:translate(0,0)}10%{transform:translate(-12px,-6px)}20%{transform:translate(12px,6px)}30%{transform:translate(-8px,10px)}40%{transform:translate(10px,-8px)}50%{transform:translate(-6px,12px)}60%{transform:translate(6px,-6px)}70%{transform:translate(-12px,6px)}80%{transform:translate(10px,-12px)}90%{transform:translate(-6px,-6px)}}
+.scare-shaking{animation:screenShake .6s ease-in-out}
 </style>
 </head>
 <body>
@@ -124,7 +350,34 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
   <p>Tap anywhere to start!</p>
 </div>
 
+<div id="gameSelect">
+  <h1>Choose Your Game</h1>
+  <p class="subtitle">Which adventure will you take?</p>
+  <div class="game-cards">
+    <div class="game-card game-card-1" onclick="selectGame(1)">
+      <span class="game-badge">Game 1</span>
+      <span class="completed-badge hidden" id="game1Complete">Completed!</span>
+      <div class="game-emoji">🐰🌷🥚</div>
+      <div class="game-title">Easter Hunt</div>
+      <div class="game-desc">A magical springtime adventure! Search for hidden eggs, solve riddles, and answer fun trivia questions.</div>
+      <div class="game-time">Around 11:00 AM</div>
+    </div>
+    <div class="game-card game-card-2 locked" id="game2Card" onclick="selectGame(2)">
+      <span class="game-badge">Game 2</span>
+      <div class="game-lock-overlay" id="game2Lock">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-text">Complete Game 1 to unlock!</div>
+      </div>
+      <div class="game-emoji">👻🌙💀</div>
+      <div class="game-title">Scary Night Easter Hunt</div>
+      <div class="game-desc">Dare to enter the darkness... A spooky twist on the egg hunt with creepy clues and eerie challenges!</div>
+      <div class="game-time">8:00 PM - When darkness falls...</div>
+    </div>
+  </div>
+</div>
+
 <button id="muteBtn" class="hidden" onclick="toggleMute()">🔊</button>
+<button id="backBtn" onclick="backToGames()">Back</button>
 
 <div id="stickyHeader">
   <div id="teamBanner"><img id="bannerPhoto" src="" alt="Team"><span id="bannerName"></span></div>
@@ -164,7 +417,7 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
   <p id="preMessage" class="hidden"></p>
   <p id="clueText"></p>
   <div class="input-row" id="passRow">
-    <input id="passInput" placeholder="Enter password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <input id="passInput" placeholder="Enter code" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
     <button class="btn btn-go" id="submitBtn" onclick="checkPassword()">GO</button>
   </div>
   <button id="finishBtn" class="btn btn-finish btn-full hidden" onclick="victory()" style="margin-top:1rem">Claim your prize! 🏆</button>
@@ -186,14 +439,40 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
   <button class="btn btn-success" onclick="nextClue()" style="margin-top:1rem">Next ➜</button>
 </div>
 
+<div id="sudokuCard" class="card card-quiz hidden">
+  <div class="step-label">Challenge <span id="sudokuStepNum">1</span> of <span id="sudokuTotalSteps">27</span></div>
+  <div id="sudokuEmoji" class="step-emoji"></div>
+  <p id="sudokuText" class="quiz-question"></p>
+  <div id="sudokuGrid" class="sudoku-grid"></div>
+  <button class="btn btn-go btn-full" onclick="checkSudoku()" style="margin-top:1rem">Check ✓</button>
+  <p id="sudokuFeedback" class="hidden" style="font-size:1.3rem;font-weight:bold;margin-top:.5rem"></p>
+</div>
+
+<div id="crosswordCard" class="card card-quiz hidden">
+  <div class="step-label">Challenge <span id="crosswordStepNum">1</span> of <span id="crosswordTotalSteps">27</span></div>
+  <div id="crosswordEmoji" class="step-emoji"></div>
+  <p id="crosswordText" class="quiz-question"></p>
+  <div class="crossword-wrap"><div id="crosswordGrid" class="crossword-grid"></div></div>
+  <div id="crosswordClues" class="crossword-clues"></div>
+  <button class="btn btn-go btn-full" onclick="checkCrossword()" style="margin-top:1rem">Check ✓</button>
+  <p id="crosswordFeedback" class="hidden" style="font-size:1.3rem;font-weight:bold;margin-top:.5rem"></p>
+</div>
+
 </div><!-- /mainContent -->
 
 <canvas id="confetti-canvas" class="hidden"></canvas>
-<div id="bunny" class="animal"></div>
-<div id="horse" class="animal" style="animation-delay:4s"></div>
+<!-- Light theme animals -->
+<div class="animal a-bunny">🐇</div>
+<div class="animal a-chick" style="animation-delay:4s">🐥</div>
+<div class="animal a-egg" style="animation-delay:8s">🥚</div>
+<!-- Dark theme animals -->
+<div class="animal a-ghost">👻</div>
+<div class="animal a-bat" style="animation-delay:3s">🦇</div>
+<div class="animal a-spider">🕷️</div>
 
 <!-- AUDIO -->
 <audio id="bgMusic" src="/audio/bg.mp3" preload="auto" loop></audio>
+<audio id="spookyMusic" src="/audio/spooky.mp3" preload="auto" loop></audio>
 <audio id="hopSound" src="/audio/hop.mp3" preload="auto"></audio>
 <audio id="correctSound" src="/audio/correct.mp3" preload="auto"></audio>
 <audio id="buzzerSound" src="/audio/buzzer.mp3" preload="auto"></audio>
@@ -203,35 +482,59 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
 window.onerror=(m,u,l,c,e)=>console.error('[ERROR]',m,'@',l+':'+c);
 const log=(...a)=>console.log('[HUNT]',...a);
 
-const steps=[
-{type:"clue",emoji:"🍳",text:"I hide below where meals begin, with metal skins and echoes thin. I do not feed, yet help prepare, the clatter of work is common there. Not on the bench, nor in plain sight—but where the heavy things sleep at night.",pass:"237648"},
-{type:"clue",emoji:"🌿",text:"I move with power, but not on feet, I trim the earth, my task complete. I wait in stillness when not in use, but when I'm needed, I cut straight through. Not where you walk, but where you steer, find me hidden, sharp and near.",pass:"176356"},
-{type:"quiz",emoji:"🎵",text:"What was Taylor Swift's very first album called?",options:["Fearless","Taylor Swift","Red","Speak Now"],answer:1},
-{type:"clue",emoji:"🚪",text:"I sit by the place where guests arrive, though I hold no flame, I still survive. I'm meant to glow but stay unlit, by the front door, I quietly sit.",pass:"638265"},
-{type:"clue",emoji:"🌊",text:"I stand between a splash and a stroll, a silent guard with a watery role. Not quite a gate, not quite a wall, yet without me, chaos might befall.",pass:"983765"},
-{type:"quiz",emoji:"📅",text:"How many days are there in a leap year?",options:["364","365","366","367"],answer:2},
-{type:"clue",emoji:"🚧",text:"I stand with doors, though not to roam, a sentinel in a place you own. Four panels guard what's tucked away, amongst the tools, I quietly stay. Tall and narrow, a space for more, look where items are stored for sure.",pass:"187236"},
-{type:"clue",emoji:"🤸",text:"I lie in wait, yet never rest, a surface stretched, yet not a nest. With every spring, I rise and fall, a place to leap, yet bound by walls. Not sky, nor ground, but in between, where gravity's grip feels less serene.",pass:"225416"},
-{type:"clue",emoji:"🚗",text:"I'm not the one that's dark as night, I'm the one with a softer light. I carry you from place to place, though not a race car, I hold that grace. Look for the one with a deeper hue, that's where your next clue waits for you.",pass:"651782"},
-{type:"quiz",emoji:"🪐",text:"Which planet in our solar system is known as the Red Planet?",options:["Venus","Jupiter","Mars","Saturn"],answer:2},
-{type:"clue",emoji:"🔥",text:"I stand in wait, though not for cold, when summer calls, my fire takes hold. I breathe in heat, then give it out, a feast begins, with smoke and shout. I'm not the oven, but the flame's my friend, look where the grill and fire blend.",pass:"672897"},
-{type:"clue",emoji:"🐱",text:"A banquet awaits, but not where you dine, no pots, no pans, no vintage wine. For one who slinks on silent feet, this is the place they find their treat. Where humans might not think to snack, yet daily rituals bring them back.",pass:"466378"},
-{type:"quiz",emoji:"❄️",text:"In the movie Frozen, what is the name of Elsa's sister?",options:["Ariel","Anna","Aurora","Alice"],answer:1},
-{type:"clue",emoji:"📬",text:"I stand with a door, yet not for you, a keeper of things, but not for view. I wait by the road, in silent grace, where things arrive, but never stay in place. Look for me where others depart, I'm small and humble, but play my part.",pass:"873654"},
-{type:"clue",emoji:"📺",text:"I come alive when the world's on screen, a window to places you've never seen. I speak in sound, yet never shout, through flickers and frames, I show each bout. Look for the one that brings you near—where stories unfold, your next clue's clear.",pass:"998736"},
-{type:"quiz",emoji:"🎨",text:"What colour do you get when you mix blue and yellow?",options:["Purple","Orange","Green","Pink"],answer:2},
-{type:"clue",emoji:"📦",text:"Stacked in silence, side by side, they guard their secrets deep inside. Some hold tools, or bits and ends, a mix of memories, means, and bends. Look to the shelf that's near the floor—The box you seek is one of four.",pass:"652371"},
-{type:"clue",emoji:"🚶",text:"I sit in wait, where feet do tread, I shield what's hidden just ahead. Though I may seem simple, plain, and flat, look beneath me for what's at bat. Not far from the place where steps begin, your next clue waits, tucked safely in.",pass:"628376"},
-{type:"clue",emoji:"🍖",text:"I wait with patience, silent, still, where warmth is born by human will. A door you'll find, but not for going, behind it, magic's subtly glowing. No flames, no fire, yet heat does rise, where cold things transform before your eyes.",pass:"873652"},
-{type:"quiz",emoji:"💎",text:"What is the hardest natural substance on Earth?",options:["Gold","Iron","Diamond","Ruby"],answer:2},
-{type:"clue",emoji:"❄️",text:"I am not warm, yet full of life, I hum through day and quiet night. Within my walls, the world is paused, preserved in stillness, rarely flawed. Seek what waits in breathless rest—the clue lies where the cold is best.",pass:"337625"},
-{type:"clue",emoji:"📏",text:"I stand with doors, but not to roam, a place for items, a storage home. Unscramble these letters, take your time: F U F B E T  T I N U — the answer you will find!",pass:"635526"},
-{type:"quiz",emoji:"🦁",text:"Which animal is known as the King of the Jungle?",options:["Tiger","Elephant","Lion","Bear"],answer:2},
-{type:"clue",emoji:"🐾",text:"Not hidden in plain sight, but often near, where paws tread softly, and love is clear. Look for the one that answers when called, the number you need is worn, not scrawled.",pass:"967255"},
-{type:"clue",emoji:"🤖",text:"I listen closely, yet never speak, until you ask the words you seek. I may not move, but I'm quite smart, I answer questions, play my part. Look for the one who hears it all, your next clue's where I stand tall.",pass:"761523"},
-{type:"clue",emoji:"🎁",text:"Begin at the end, or is it the start? A circle completed, a clever art. The journey began with a simple glance, at something flat — not left to chance. They dress the table but do not feed, among their layers, you'll find what you need.",pass:"Money"}];
+/* ===== GAME DATA ===== */
+const game1Steps=[
+{type:"clue",emoji:"🛋️",text:"A place to rest your weary head, or sink into when day is dead. Lift a cushion, check beneath, the first clue hides where you seek relief.",pass:"1356"},
+{type:"clue",emoji:"📚",text:"Stories lie, stacked in line, somewhere between a cover and spine. The thief loves tales, as you will see, but the next clue hides where pages agree.",pass:"2479"},
+{type:"clue",emoji:"📬",text:"Messages travel from far and near, but only one waits quietly here. Open the box and take a peek, your next clue waits, don't be weak!",pass:"5468"},
+{type:"clue",emoji:"🧊",text:"I keep things fresh, not frozen, see, count three shelves and look carefully.",pass:"2457"},
+{type:"quiz",emoji:"🐰",text:"What animal is most associated with Easter?",options:["Chick","Lamb","Bunny","Duck"],answer:2},
+{type:"clue",emoji:"🏊",text:"Not the deep, not the wide, but where you enter with a stride. Count the steps and check each one, your next clue waits—it's almost fun!",pass:"9548"},
+{type:"clue",emoji:"🍴",text:"Not the place where food is stored, not where meals are cooked or poured. Think of tools that never eat yet help prepare the things you treat. Slide it open, don't delay—the next clue's hiding where they stay.",pass:"6345"},
+{type:"sudoku",emoji:"🔢",text:"The thief left behind a number puzzle! Fill every row, column, and 2×2 box with the numbers 1–4.",grid:[[2,0,4,0],[0,4,0,2],[1,0,3,0],[0,3,0,1]],solution:[[2,1,4,3],[3,4,1,2],[1,2,3,4],[4,3,2,1]]},
+{type:"clue",emoji:"🧺",text:"Clothes can hide in every room, in baskets tucked away from view. Some are yours, and some are shared—the thief made sure you'd be unprepared… Check them all, don't miss a beat—only one holds what you seek.",pass:"8211"},
+{type:"clue",emoji:"♨️",text:"Warm and bubbly, small but neat, jets that swirl where secrets meet. Not the big pool where you splash, look near the edge and lift the sash.",pass:"3355"},
+{type:"quiz",emoji:"🥚",text:"What is the tradition of decorating eggs at Easter called?",options:["Egg rolling","Egg painting","Egg hunting","Egg dyeing"],answer:3},
+{type:"clue",emoji:"🛏️",text:"Some are for your head, some for your back, all lined up in a comfy stack. Don't choose the first one that you see—that would be too easy… Start on the left and count along—the third one hides what's gone.",pass:"2036"},
+{type:"clue",emoji:"🪞",text:"Reflections lie, they twist what's true, don't trust the glass; look behind you. The thief left a hint where you can't see, turn around—your next clue's the key.",pass:"4601"},
+{type:"clue",emoji:"🌺",text:"I'm meant for life, but stand here bare, no soil to tend, no plants to care. I sit alone beside the line that marks the edge—your yard from mine. Look beneath, don't look inside—that's where the thief chose to hide. Extra hint: By the fence where nothing grows, a lonely home for plants it shows. No blooms, no leaves, just waiting there—look underneath with thoughtful care.",pass:"3208"},
+{type:"clue",emoji:"🔥",text:"I cook your meals with heat and light, but the thief never used me right. Peek around, not inside hot, the next clue waits—you've found the spot!",pass:"9946"},
+{type:"quiz",emoji:"🍫",text:"What chocolate shape is most popular at Easter?",options:["Chocolate bunny","Chocolate bar","Chocolate coin","Chocolate cake"],answer:0},
+{type:"clue",emoji:"🚧",text:"The thief escaped but couldn't flee, leaving a mark near something key. Count five posts from the corner stone, your next clue waits all alone.",pass:"2244"},
+{type:"clue",emoji:"👕",text:"Clothes may spin and clothes may dry, but only one place reaches sky. Look outside, not in the heat—where fabric dances in the breeze so sweet. Check along, don't just glance—somewhere there, you'll find your chance.",pass:"7698"},
+{type:"clue",emoji:"🔧",text:"The thief followed pipes, avoiding the spray, to a humming box that works all day. The water moves because of me, find me and the clue you'll see.",pass:"6685"},
+{type:"crossword",emoji:"✏️",text:"The thief left a word puzzle! Solve the Easter crossword.",size:{rows:5,cols:5},words:[{word:"CANDY",row:0,col:0,dir:"across",clue:"Sweet treats you find in Easter eggs"},{word:"EGG",row:1,col:2,dir:"across",clue:"You hunt for these at Easter"},{word:"CHICK",row:0,col:0,dir:"down",clue:"A baby bird that hatches from an egg"},{word:"APRIL",row:0,col:1,dir:"down",clue:"The month Easter usually falls in"},{word:"NEST",row:0,col:2,dir:"down",clue:"Where birds keep their eggs safe"}]},
+{type:"clue",emoji:"🔨",text:"They cut, they twist, they help you mend, some hang above, some lie at end. Hung above or laid below, these helpers make the projects go. Look where hands would use them all—that's where your hidden clue will call.",pass:"1047"},
+{type:"quiz",emoji:"🐣",text:"How many days after Ash Wednesday does Easter Sunday fall?",options:["30 days","40 days","46 days","50 days"],answer:2},
+{type:"clue",emoji:"🍖",text:"Where meals are shared, and laughter rings, the thief left something under things. Lift the edge and search around, the next clue there will be found.",pass:"3280"},
+{type:"clue",emoji:"👟",text:"Feet go in, feet go out, but the thief left a clue, no doubt. Not in socks or hats above, but where shoes line up in rows you love.",pass:"9411"},
+{type:"clue",emoji:"🌳",text:"Up in the front where sunlight streams, a leafy friend with gentle beams. Its branches stretch and sometimes sway, look beneath, your clue's at play.",pass:"7621"},
+{type:"quiz",emoji:"🌷",text:"Easter always falls in which season in Australia?",options:["Spring","Summer","Autumn","Winter"],answer:2},
+{type:"clue",emoji:"🎁",text:"You've solved the puzzles, found the way, the treasure waits to save the day. Not outside, but tucked away, where treats and chocolate like to stay. Everything is ready now it's true, the final spot is waiting for you! Now rearrange the letter cards to reveal where the treasure is hidden!",pass:"HYUNDAI"}];
 
+const game2Steps=[
+{type:"clue",emoji:"🛏️",text:"To begin where shadows creep, and sleepy heads lie down to sleep. Find where dreams begin each night, your first clue hides out of sight.",pass:"3743"},
+{type:"clue",emoji:"🚗",text:"In darkness waits a silent beast, that carries you from west to east. It sleeps indoors, away from rain, go search inside its metal frame.",pass:"1955"},
+{type:"clue",emoji:"🧵",text:"It coils like something long and sly, but brings the water, not a cry. Spin it round, but don't delay, your next clue's hiding where it stays.",pass:"2682"},
+{type:"clue",emoji:"🚙",text:"A larger beast now waits outside, with rugged wheels and strength and pride. It's parked where moonlight helps you see, look close—your clue is there to be.",pass:"8639"},
+{type:"clue",emoji:"💧",text:"Tall and quiet, dark and round, it holds what falls without a sound. Rain is where its secrets keep, check it now—but don't wake what sleeps…",pass:"0167"},
+{type:"scare",text:"Shhh… something is watching you.\n\nLook very closely at the screen…",scareEmoji:"👹"},
+{type:"clue",emoji:"🌿",text:"Where creatures crawl and night bugs fly, and leaves may rustle softly by. Shine your torch upon the ground, your next clue waits where dirt is found.",pass:"3904"},
+{type:"clue",emoji:"🚪",text:"A door that's used but not the main, where muddy shoes might leave a stain. It creaks at night (or so they say…), go find the clue without delay.",pass:"4178"},
+{type:"clue",emoji:"🧺",text:"Round and round the darkness goes, cleaning dirt from shirts and clothes. Listen close—you might just hear, a spinning sound when you are near…",pass:"8071"},
+{type:"clue",emoji:"🍽️",text:"Cold as night or filled with treats, a place that hides your favourite eats. But something else is waiting too… Open up and find your clue.",pass:"6319"},
+{type:"clue",emoji:"🍫",text:"You've walked the dark, you've been so brave, through every clue, each path you gave. Now one last place to end your quest, where Easter treats are hidden best. Not outside, but tucked away, where treats and chocolate like to stay…",pass:"8945"}];
+
+const gameConfigs={
+ 1:{steps:game1Steps,title:"Easter Egg Hunt 🐣",victoryEmoji:"🎉🐇🎉",victoryMsg:"You recovered the treasure!",victoryDetail:"The Easter Bunny is saved! Enjoy your surprise! 🍬🍭🐰",introEmoji:"🐰💐🌷",introText:"The Easter Bunny is in trouble! Last night, a mischievous thief snuck into the yard and stole the Easter treasure. All that's left is a trail of hidden clues… and a mysterious message: \"Only the clever will find what's been taken.\" Your mission: Solve each puzzle, find the next clue, and recover the treasure before Easter ends!",dark:false},
+ 2:{steps:game2Steps,title:"Scary Night Easter Hunt 👻",victoryEmoji:"👻💀🎃",victoryMsg:"You survived the darkness!",victoryDetail:"The night spares you... for now... 🕷️🦇",introEmoji:"👻🌙💀",introText:"Dare to enter the darkness? The hunt begins... if you're brave enough.",dark:true}
+};
+
+/* ===== GAME STATE ===== */
+let currentGame=0;
+let steps=[];
 let step=0,totalTime=3600,questionTime=300,totalTimer,questionTimer,isPaused=false,totalBuzzed=false;
+let spookyInterval=null;
 
 /* helpers */
 const $=id=>document.getElementById(id);
@@ -240,15 +543,137 @@ let isMuted=false;
 const safePlay=a=>{if(isMuted)return;a.muted=false;a.play().catch(()=>{})};
 const safeLoop=(s,m)=>setInterval(()=>!isPaused&&safePlay(s),m);
 
+/* ===== SPLASH & GAME SELECT ===== */
 function dismissSplash(){
  const ctx=new(window.AudioContext||window.webkitAudioContext)();ctx.resume();
  $('bgMusic').play().catch(()=>{});
  $('splash').style.display='none';
  $('muteBtn').classList.remove('hidden');
+ showGameSelect();
 }
+function switchMusic(dark){
+ if(dark){
+  $('bgMusic').pause();$('bgMusic').currentTime=0;
+  $('spookyMusic').muted=isMuted;
+  $('spookyMusic').play().catch(()=>{});
+ }else{
+  $('spookyMusic').pause();$('spookyMusic').currentTime=0;
+  $('bgMusic').muted=isMuted;
+  $('bgMusic').play().catch(()=>{});
+ }
+}
+
+function showGameSelect(){
+ /* Reset state for returning to select screen */
+ document.body.classList.remove('dark-theme');
+ $('gameSelect').style.display='block';
+ $('mainContent').style.display='none';
+ $('stickyHeader').style.display='none';
+ $('backBtn').style.display='none';
+ removeSpookyParticles();
+ switchMusic(false);
+ /* Remove any existing overlays */
+ document.querySelectorAll('.overlay').forEach(el=>el.remove());
+
+ /* Check if Game 1 is completed */
+ const g1Done=localStorage.getItem('easterHunt_game1_complete')==='true';
+ if(g1Done){
+  $('game2Card').classList.remove('locked');
+  $('game2Lock').style.display='none';
+  $('game1Complete').classList.remove('hidden');
+ }else{
+  $('game2Card').classList.add('locked');
+  $('game2Lock').style.display='flex';
+  $('game1Complete').classList.add('hidden');
+ }
+}
+
+function selectGame(num){
+ if(num===2){
+  const g1Done=localStorage.getItem('easterHunt_game1_complete')==='true';
+  if(!g1Done){
+   /* Shake the locked card */
+   const card=$('game2Card');card.style.animation='shake .5s ease-in-out';
+   setTimeout(()=>card.style.animation='',600);
+   return;
+  }
+ }
+ currentGame=num;
+ const config=gameConfigs[num];
+ steps=config.steps;
+
+ /* Apply theme */
+ if(config.dark){
+  document.body.classList.add('dark-theme');
+  startSpookyParticles();
+  switchMusic(true);
+ }else{
+  document.body.classList.remove('dark-theme');
+  removeSpookyParticles();
+  switchMusic(false);
+ }
+
+ /* Reset game state */
+ step=0;totalTime=3600;questionTime=300;isPaused=false;totalBuzzed=false;
+ clearInterval(totalTimer);clearInterval(questionTimer);
+
+ /* Set up UI */
+ $('pageTitle').textContent=config.title;
+ $('pageTitle').classList.remove('hidden');
+ $('gameSelect').style.display='none';
+ $('mainContent').style.display='block';
+ $('backBtn').style.display='block';
+
+ /* Reset team setup visibility */
+ $('teamSetup').classList.remove('hidden');
+ $('intro').classList.add('hidden');
+ $('clue').classList.add('hidden');
+ $('quiz').classList.add('hidden');
+ $('success').classList.add('hidden');
+ $('stickyHeader').style.display='none';
+
+ /* Reset selfie UI */
+ $('selfiePreview').style.display='none';
+ $('selfiePlaceholder').style.display='flex';
+ $('teamNameInput').value='';
+ teamSelfieData='';
+
+ /* Update intro card based on game */
+ $('intro').querySelector('div').textContent=config.introEmoji;
+ $('intro').querySelector('p').innerHTML='Hey <span id="teamGreeting">team</span>!<br>'+config.introText;
+
+ log('Selected game',num,config.title);
+}
+
+function backToGames(){
+ clearInterval(totalTimer);clearInterval(questionTimer);
+ showGameSelect();
+}
+
+/* Spooky floating particles for Game 2 */
+function startSpookyParticles(){
+ removeSpookyParticles();
+ const spookyEmojis=['👻','🕷️','🦇','💀','🕸️','🎃','👁️','🐈‍⬛'];
+ spookyInterval=setInterval(()=>{
+  const el=document.createElement('div');
+  el.className='spooky-particle';
+  el.textContent=spookyEmojis[Math.floor(Math.random()*spookyEmojis.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.animationDuration=(6+Math.random()*6)+'s';
+  el.style.fontSize=(1+Math.random()*1.5)+'rem';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),12000);
+ },2000);
+}
+function removeSpookyParticles(){
+ if(spookyInterval){clearInterval(spookyInterval);spookyInterval=null;}
+ document.querySelectorAll('.spooky-particle').forEach(el=>el.remove());
+}
+
 function toggleMute(){
  isMuted=!isMuted;
  $('bgMusic').muted=isMuted;
+ $('spookyMusic').muted=isMuted;
  $('muteBtn').textContent=isMuted?'🔇':'🔊';
 }
 
@@ -271,7 +696,8 @@ function submitTeam(){
  if(teamSelfieData){$('bannerPhoto').src=teamSelfieData;}
  else{$('bannerPhoto').style.display='none';}
  $('bannerName').textContent='Team '+name;
- $('teamGreeting').textContent=name;
+ const greetEl=document.getElementById('teamGreeting');
+ if(greetEl)greetEl.textContent=name;
  $('intro').classList.remove('hidden');
 }
 
@@ -319,14 +745,15 @@ function startHunt(){
  log('startHunt');
  $('intro').classList.add('hidden');
  $('pageTitle').classList.add('hidden');
+ $('backBtn').style.display='none';
  $('stickyHeader').style.display='block';
  startTotal();showStep();
- safeLoop($('hopSound'),20000);kickOffHop($('bunny'),0);kickOffHop($('horse'),4000);
+ safeLoop($('hopSound'),20000);
 }
-function kickOffHop(el,d){el.style.left='-120px';setTimeout(()=>{el.style.transition='left 1000ms linear';el.style.left='110vw'},d);}
 
 function hideAllPanels(){
- ['clue','quiz','success'].forEach(id=>$(id).classList.add('hidden'));
+ ['clue','quiz','success','sudokuCard','crosswordCard'].forEach(id=>$(id).classList.add('hidden'));
+ const scare=document.getElementById('scareOverlay');if(scare)scare.remove();
 }
 function showStep(){
  log('showStep',step);
@@ -346,14 +773,60 @@ function showStep(){
   });
   $('quiz').classList.remove('hidden');
   startQ();
+ }else if(s.type==='sudoku'){
+  $('sudokuStepNum').textContent=step+1;$('sudokuTotalSteps').textContent=total;
+  $('sudokuEmoji').textContent=s.emoji||'';
+  $('sudokuText').textContent=s.text;
+  $('sudokuFeedback').classList.add('hidden');
+  renderSudoku(s);
+  $('sudokuCard').classList.remove('hidden');
+  startQ();
+ }else if(s.type==='crossword'){
+  $('crosswordStepNum').textContent=step+1;$('crosswordTotalSteps').textContent=total;
+  $('crosswordEmoji').textContent=s.emoji||'';
+  $('crosswordText').textContent=s.text;
+  $('crosswordFeedback').classList.add('hidden');
+  renderCrossword(s);
+  $('crosswordCard').classList.remove('hidden');
+  startQ();
+ }else if(s.type==='scare'){
+  updateProgress();
+  const ov=document.createElement('div');ov.className='scare-overlay';ov.id='scareOverlay';
+  ov.innerHTML='<p class="scare-text">'+s.text.replace(/\n/g,'<br>')+'</p><div class="scare-face">'+s.scareEmoji+'</div>';
+  document.body.appendChild(ov);
+  setTimeout(()=>{
+   const txt=ov.querySelector('.scare-text');
+   const face=ov.querySelector('.scare-face');
+   txt.style.display='none';
+   ov.style.background='#fff';
+   setTimeout(()=>{ov.style.background='#000';},80);
+   face.style.display='block';
+   ov.classList.add('scare-shaking');
+   safePlay($('buzzerSound'));
+   if(!isMuted){$('spookyMusic').volume=1;setTimeout(()=>{$('spookyMusic').volume=.6;},1500);}
+  },3000);
+  setTimeout(()=>{
+   ov.style.transition='opacity .5s';ov.style.opacity='0';
+   setTimeout(()=>{ov.remove();step++;showStep();},600);
+  },5500);
  }else{
   $('stepNum').textContent=step+1;$('totalSteps').textContent=total;
   $('clueEmoji').textContent=s.emoji||'';
-  $('clueText').textContent=s.text;$('passInput').value='';
-  $('preMessage').classList.toggle('hidden',!final);$('preMessage').textContent=final?"Congratulations on getting to the end!!":"";
-  $('passRow').classList.toggle('hidden',final);$('finishBtn').classList.toggle('hidden',!final);
+  $('passInput').value='';$('finishBtn').classList.add('hidden');
+  $('passRow').classList.remove('hidden');
+  if(final){
+   $('preMessage').classList.remove('hidden');$('preMessage').textContent='Congratulations on getting to the end!!';
+   $('clueText').innerHTML=s.text+'<br><br><span style="font-size:2.2rem;letter-spacing:14px;font-weight:bold;color:#d63384">_ _ _ _ _ _ _</span>';
+   $('passInput').inputMode='text';$('passInput').placeholder='Enter the word';
+   $('passInput').autocapitalize='characters';
+  }else{
+   $('preMessage').classList.add('hidden');
+   $('clueText').textContent=s.text;
+   $('passInput').inputMode='numeric';$('passInput').placeholder='Enter code';
+   $('passInput').autocapitalize='off';
+  }
   $('clue').classList.remove('hidden');
-  if(!final)startQ();
+  startQ();
  }
 }
 function checkQuiz(idx,btn){
@@ -371,7 +844,6 @@ function checkQuiz(idx,btn){
   allBtns[s.answer].classList.add('correct');
   $('quizFeedback').textContent='Not quite! The answer is: '+s.options[s.answer];$('quizFeedback').style.color='#e53935';$('quizFeedback').classList.remove('hidden');
   safePlay($('buzzerSound'));
-  /* shake the card */
   const card=$('quiz');card.classList.add('shake');setTimeout(()=>card.classList.remove('shake'),600);
   clearInterval(questionTimer);
   setTimeout(()=>{hideAllPanels();$('success').classList.remove('hidden');},2500);
@@ -382,14 +854,128 @@ function checkPassword(){
  log('checkPassword',ans,'expect',steps[step].pass);
  if(ans===steps[step].pass.toLowerCase()){
   $('passInput').blur();
-  safePlay($('correctSound'));confetti({particleCount:120,spread:100,origin:{y:.6}});
-  clearInterval(questionTimer);$('clue').classList.add('hidden');$('success').classList.remove('hidden');
+  safePlay($('correctSound'));
+  clearInterval(questionTimer);
+  if(step===steps.length-1){
+   confetti({particleCount:300,spread:160,origin:{y:.5}});
+   setTimeout(()=>confetti({particleCount:250,spread:140,origin:{y:.3}}),400);
+   setTimeout(()=>confetti({particleCount:250,spread:120,origin:{y:.6}}),800);
+   setTimeout(()=>confetti({particleCount:200,spread:160,origin:{y:.4}}),1200);
+   setTimeout(()=>confetti({particleCount:150,spread:100,origin:{y:.5}}),1600);
+   setTimeout(()=>{safePlay($('correctSound'));},1000);
+   setTimeout(()=>{$('clue').classList.add('hidden');victory();},2500);
+  }else{
+   confetti({particleCount:120,spread:100,origin:{y:.6}});
+   $('clue').classList.add('hidden');$('success').classList.remove('hidden');
+  }
  }else{
   $('feedback').classList.remove('hidden');
+  safePlay($('buzzerSound'));
   const card=$('clue');card.classList.add('shake');setTimeout(()=>card.classList.remove('shake'),600);
  }
 }
-/* submit on Enter key */
+/* ===== SUDOKU ===== */
+function renderSudoku(s){
+ const g=$('sudokuGrid');g.innerHTML='';
+ for(let r=0;r<4;r++)for(let c=0;c<4;c++){
+  const inp=document.createElement('input');
+  inp.className='sudoku-cell'+(s.grid[r][c]?' given':'')+(c===1?' s-right':'')+(r===1?' s-bottom':'');
+  inp.type='text';inp.maxLength=1;inp.inputMode='numeric';
+  inp.dataset.r=r;inp.dataset.c=c;
+  if(s.grid[r][c]){inp.value=s.grid[r][c];inp.readOnly=true;}
+  inp.addEventListener('input',function(){
+   this.value=this.value.replace(/[^1-4]/g,'');
+   if(this.value){const cells=[...g.querySelectorAll('.sudoku-cell')];const idx=cells.indexOf(this);if(idx<15){const next=cells.slice(idx+1).find(c=>!c.readOnly);if(next)next.focus();}}
+  });
+  g.appendChild(inp);
+ }
+}
+function checkSudoku(){
+ const s=steps[step];const cells=$('sudokuGrid').querySelectorAll('.sudoku-cell');
+ let correct=true,allFilled=true;
+ cells.forEach(inp=>{const r=+inp.dataset.r,c=+inp.dataset.c;if(!inp.value)allFilled=false;if(+inp.value!==s.solution[r][c])correct=false;});
+ const fb=$('sudokuFeedback');fb.classList.remove('hidden');
+ if(!allFilled){fb.textContent='Fill in all the numbers first!';fb.style.color='#e53935';setTimeout(()=>fb.classList.add('hidden'),2000);return;}
+ if(correct){
+  fb.textContent='Correct! ✨';fb.style.color='#2e7d32';
+  safePlay($('correctSound'));confetti({particleCount:120,spread:100,origin:{y:.6}});
+  clearInterval(questionTimer);
+  setTimeout(()=>{hideAllPanels();$('success').classList.remove('hidden');},1200);
+ }else{
+  fb.textContent='Not quite — check your numbers!';fb.style.color='#e53935';
+  safePlay($('buzzerSound'));
+  const card=$('sudokuCard');card.classList.add('shake');setTimeout(()=>card.classList.remove('shake'),600);
+  setTimeout(()=>fb.classList.add('hidden'),2000);
+ }
+}
+
+/* ===== CROSSWORD ===== */
+function renderCrossword(s){
+ const {size,words}=s;
+ const grid=Array.from({length:size.rows},()=>Array(size.cols).fill(null));
+ words.forEach(w=>{for(let i=0;i<w.word.length;i++){
+  const r=w.dir==='down'?w.row+i:w.row,c=w.dir==='across'?w.col+i:w.col;
+  grid[r][c]={letter:w.word[i]};
+ }});
+ const nums={};let n=1;
+ const starts=words.map(w=>({row:w.row,col:w.col})).sort((a,b)=>a.row-b.row||a.col-b.col);
+ starts.forEach(s=>{const k=s.row+','+s.col;if(!nums[k])nums[k]=n++;});
+ const g=$('crosswordGrid');g.innerHTML='';
+ g.style.gridTemplateColumns='repeat('+size.cols+',44px)';
+ const inputs=[];
+ for(let r=0;r<size.rows;r++)for(let c=0;c<size.cols;c++){
+  const div=document.createElement('div');div.className='crossword-cell';
+  if(!grid[r][c]){div.classList.add('black');}
+  else{
+   const k=r+','+c;
+   if(nums[k]){const sp=document.createElement('span');sp.className='crossword-num';sp.textContent=nums[k];div.appendChild(sp);}
+   const inp=document.createElement('input');inp.type='text';inp.maxLength=1;
+   inp.dataset.r=r;inp.dataset.c=c;
+   inp.addEventListener('input',function(){
+    this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase();
+    if(this.value){const all=[...g.querySelectorAll('input')];const idx=all.indexOf(this);if(idx<all.length-1)all[idx+1].focus();}
+   });
+   div.appendChild(inp);inputs.push(inp);
+  }
+  g.appendChild(div);
+ }
+ const cl=$('crosswordClues');
+ const across=words.filter(w=>w.dir==='across').sort((a,b)=>a.row-b.row||a.col-b.col);
+ const down=words.filter(w=>w.dir==='down').sort((a,b)=>a.row-b.row||a.col-b.col);
+ let html='<h4>Across</h4>';
+ across.forEach(w=>{html+=nums[w.row+','+w.col]+'. '+w.clue+'<br>';});
+ html+='<h4>Down</h4>';
+ down.forEach(w=>{html+=nums[w.row+','+w.col]+'. '+w.clue+'<br>';});
+ cl.innerHTML=html;
+}
+function checkCrossword(){
+ const s=steps[step];const inputs=$('crosswordGrid').querySelectorAll('input');
+ let correct=true,allFilled=true;
+ inputs.forEach(inp=>{
+  const r=+inp.dataset.r,c=+inp.dataset.c;
+  if(!inp.value)allFilled=false;
+  let expected='';
+  s.words.forEach(w=>{for(let i=0;i<w.word.length;i++){
+   const wr=w.dir==='down'?w.row+i:w.row,wc=w.dir==='across'?w.col+i:w.col;
+   if(wr===r&&wc===c)expected=w.word[i];
+  }});
+  if(inp.value.toUpperCase()!==expected)correct=false;
+ });
+ const fb=$('crosswordFeedback');fb.classList.remove('hidden');
+ if(!allFilled){fb.textContent='Fill in all the letters first!';fb.style.color='#e53935';setTimeout(()=>fb.classList.add('hidden'),2000);return;}
+ if(correct){
+  fb.textContent='Correct! ✨';fb.style.color='#2e7d32';
+  safePlay($('correctSound'));confetti({particleCount:120,spread:100,origin:{y:.6}});
+  clearInterval(questionTimer);
+  setTimeout(()=>{hideAllPanels();$('success').classList.remove('hidden');},1200);
+ }else{
+  fb.textContent='Not quite — check your letters!';fb.style.color='#e53935';
+  safePlay($('buzzerSound'));
+  const card=$('crosswordCard');card.classList.add('shake');setTimeout(()=>card.classList.remove('shake'),600);
+  setTimeout(()=>fb.classList.add('hidden'),2000);
+ }
+}
+
 document.addEventListener('keydown',function(e){
  if(e.key==='Enter'&&!$('passRow').classList.contains('hidden')&&!$('clue').classList.contains('hidden'))checkPassword();
 });
@@ -401,8 +987,17 @@ function nextClue(){
 }
 function victory(){
  clearInterval(totalTimer);clearInterval(questionTimer);
+ const config=gameConfigs[currentGame];
  const el=document.createElement('div');el.className='overlay';
- el.innerHTML='<div class="big-emoji">🎉🐇🎉</div><h1>You found all the clues!</h1><p>Enjoy your surprise! 🍬🍭</p>';
+
+ /* Mark game as complete */
+ if(currentGame===1){
+  localStorage.setItem('easterHunt_game1_complete','true');
+ }
+
+ let btnHtml='<button class="btn btn-primary" onclick="this.closest(\'.overlay\').remove();showGameSelect();" style="margin-top:1.5rem;font-size:1.2rem">Back to Games</button>';
+
+ el.innerHTML='<div class="big-emoji">'+config.victoryEmoji+'</div><h1>'+config.victoryMsg+'</h1><p>'+config.victoryDetail+'</p>'+btnHtml;
  document.body.appendChild(el);
  confetti({particleCount:300,spread:160,origin:{y:.5}});
  setTimeout(()=>confetti({particleCount:200,spread:120,origin:{y:.3}}),800);
@@ -410,13 +1005,13 @@ function victory(){
 function endGame(msg){
  clearInterval(totalTimer);clearInterval(questionTimer);
  const el=document.createElement('div');el.className='overlay';
- el.innerHTML='<div class="big-emoji">⏰</div><h1>'+msg+'</h1><p>Better luck next time!</p>';
+ let btnHtml='<button class="btn btn-primary" onclick="this.closest(\'.overlay\').remove();showGameSelect();" style="margin-top:1.5rem;font-size:1.2rem">Back to Games</button>';
+ el.innerHTML='<div class="big-emoji">⏰</div><h1>'+msg+'</h1><p>Better luck next time!</p>'+btnHtml;
  document.body.appendChild(el);
 }
 function togglePause(){isPaused=!isPaused;updateTotal();}
 
 $('startBtn').addEventListener('click',startHunt);
-/* allow Enter to submit on password field */
 $('passInput').addEventListener('keydown',function(e){if(e.key==='Enter')checkPassword();});
 </script>
 </body>
