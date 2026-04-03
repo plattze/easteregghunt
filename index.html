@@ -138,7 +138,7 @@ h1.page-title{font-size:2rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.15);
 .step-label{font-size:1rem;font-weight:bold;color:#a18cd1;text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
 
 /* Clue text */
-#clueText{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Trebuchet MS",Arial,sans-serif;font-size:1.2rem;letter-spacing:.3px;line-height:1.6;color:#4a1942;margin:1rem 0}
+#clueText{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Trebuchet MS",Arial,sans-serif;font-size:1.2rem;letter-spacing:.3px;line-height:1.6;color:#4a1942;margin:1rem 0;white-space:pre-line}
 
 /* Input row */
 .input-row{display:flex;gap:.5rem;max-width:400px;margin:1rem auto 0}
@@ -484,49 +484,49 @@ const log=(...a)=>console.log('[HUNT]',...a);
 
 /* ===== GAME DATA ===== */
 const game1Steps=[
-{type:"clue",emoji:"🛋️",text:"A place to rest your weary head, or sink into when day is dead. Lift a cushion, check beneath, the first clue hides where you seek relief.",pass:"1356"},
-{type:"clue",emoji:"📚",text:"Stories lie, stacked in line, somewhere between a cover and spine. The thief loves tales, as you will see, but the next clue hides where pages agree.",pass:"2479"},
-{type:"clue",emoji:"📬",text:"Messages travel from far and near, but only one waits quietly here. Open the box and take a peek, your next clue waits, don't be weak!",pass:"5468"},
-{type:"clue",emoji:"🧊",text:"I keep things fresh, not frozen, see, count three shelves and look carefully.",pass:"2457"},
+{type:"clue",emoji:"🛋️",text:"A place to rest your weary head,\nOr sink into when day is dead.\nLift a cushion, check beneath,\nThe first clue hides where you seek relief.",pass:"1356"},
+{type:"clue",emoji:"📚",text:"Stories lie, stacked in line,\nSomewhere between a cover and spine.\nThe thief loves tales, as you will see,\nBut the next clue hides where pages agree.",pass:"2479"},
+{type:"clue",emoji:"📬",text:"Messages travel from far and near,\nBut only one waits quietly here.\nOpen the box and take a peek,\nYour next clue waits, don't be weak!",pass:"5468"},
+{type:"clue",emoji:"🧊",text:"I keep things fresh, not frozen, see,\nCount three shelves and look carefully.",pass:"2457"},
 {type:"quiz",emoji:"🐰",text:"What animal is most associated with Easter?",options:["Chick","Lamb","Bunny","Duck"],answer:2},
-{type:"clue",emoji:"🏊",text:"Not the deep, not the wide, but where you enter with a stride. Count the steps and check each one, your next clue waits—it's almost fun!",pass:"9548"},
-{type:"clue",emoji:"🍴",text:"Not the place where food is stored, not where meals are cooked or poured. Think of tools that never eat yet help prepare the things you treat. Slide it open, don't delay—the next clue's hiding where they stay.",pass:"6345"},
-{type:"sudoku",emoji:"🔢",text:"The thief left behind a number puzzle! Fill every row, column, and 2×2 box with the numbers 1–4.",grid:[[2,0,4,0],[0,4,0,2],[1,0,3,0],[0,3,0,1]],solution:[[2,1,4,3],[3,4,1,2],[1,2,3,4],[4,3,2,1]]},
-{type:"clue",emoji:"🧺",text:"Clothes can hide in every room, in baskets tucked away from view. Some are yours, and some are shared—the thief made sure you'd be unprepared… Check them all, don't miss a beat—only one holds what you seek.",pass:"8211"},
-{type:"clue",emoji:"♨️",text:"Warm and bubbly, small but neat, jets that swirl where secrets meet. Not the big pool where you splash, look near the edge and lift the sash.",pass:"3355"},
+{type:"clue",emoji:"🏊",text:"Not the deep, not the wide,\nBut where you enter with a stride.\nCount the steps and check each one,\nYour next clue waits—it's almost fun!",pass:"9548"},
+{type:"clue",emoji:"🍴",text:"Not the place where food is stored,\nNot where meals are cooked or poured.\nThink of tools that never eat\nYet help prepare the things you treat.\nSlide it open, don't delay —\nThe next clue's hiding where they stay.",pass:"6345"},
+{type:"sudoku",emoji:"🔢",text:"The thief left behind a number puzzle!\nFill every row, column, and 2×2 box with the numbers 1–4.",grid:[[2,0,4,0],[0,4,0,2],[1,0,3,0],[0,3,0,1]],solution:[[2,1,4,3],[3,4,1,2],[1,2,3,4],[4,3,2,1]]},
+{type:"clue",emoji:"🧺",text:"Clothes can hide in every room,\nIn baskets tucked away from view.\nSome are yours, and some are shared —\nThe thief made sure you'd be unprepared….\nCheck them all, don't miss a beat —\nOnly one holds what you seek.",pass:"8211"},
+{type:"clue",emoji:"♨️",text:"Warm and bubbly, small but neat,\nJets that swirl where secrets meet.\nNot the big pool where you splash,\nLook near the edge and lift the sash.",pass:"3355"},
 {type:"quiz",emoji:"🥚",text:"What is the tradition of decorating eggs at Easter called?",options:["Egg rolling","Egg painting","Egg hunting","Egg dyeing"],answer:3},
-{type:"clue",emoji:"🛏️",text:"Some are for your head, some for your back, all lined up in a comfy stack. Don't choose the first one that you see—that would be too easy… Start on the left and count along—the third one hides what's gone.",pass:"2036"},
-{type:"clue",emoji:"🪞",text:"Reflections lie, they twist what's true, don't trust the glass; look behind you. The thief left a hint where you can't see, turn around—your next clue's the key.",pass:"4601"},
-{type:"clue",emoji:"🌺",text:"I'm meant for life, but stand here bare, no soil to tend, no plants to care. I sit alone beside the line that marks the edge—your yard from mine. Look beneath, don't look inside—that's where the thief chose to hide. Extra hint: By the fence where nothing grows, a lonely home for plants it shows. No blooms, no leaves, just waiting there—look underneath with thoughtful care.",pass:"3208"},
-{type:"clue",emoji:"🔥",text:"I cook your meals with heat and light, but the thief never used me right. Peek around, not inside hot, the next clue waits—you've found the spot!",pass:"9946"},
+{type:"clue",emoji:"🛏️",text:"Some are for your head, some for your back,\nAll lined up in a comfy stack.\nDon't choose the first one that you see —\nThat would be too easy….\nStart on the left and count along —\nThe third one hides what's gone.",pass:"2036"},
+{type:"clue",emoji:"🪞",text:"Reflections lie, they twist what's true,\nDon't trust the glass; look behind you.\nThe thief left a hint where you can't see,\nTurn around—your next clue's the key.",pass:"4601"},
+{type:"clue",emoji:"🌺",text:"I'm meant for life, but stand here bare,\nNo soil to tend, no plants to care.\nI sit alone beside the line\nThat marks the edge — your yard from mine.\nLook beneath, don't look inside —\nThat's where the thief chose to hide.\n\nExtra clue:\nBy the fence where nothing grows,\nA lonely home for plants it shows.\nNo blooms, no leaves, just waiting there —\nLook underneath with thoughtful care.",pass:"3208"},
+{type:"clue",emoji:"🔥",text:"I cook your meals with heat and light,\nBut the thief never used me right.\nPeek around, not inside hot,\nThe next clue waits—you've found the spot!",pass:"9946"},
 {type:"quiz",emoji:"🍫",text:"What chocolate shape is most popular at Easter?",options:["Chocolate bunny","Chocolate bar","Chocolate coin","Chocolate cake"],answer:0},
-{type:"clue",emoji:"🚧",text:"The thief escaped but couldn't flee, leaving a mark near something key. Count five posts from the corner stone, your next clue waits all alone.",pass:"2244"},
-{type:"clue",emoji:"👕",text:"Clothes may spin and clothes may dry, but only one place reaches sky. Look outside, not in the heat—where fabric dances in the breeze so sweet. Check along, don't just glance—somewhere there, you'll find your chance.",pass:"7698"},
-{type:"clue",emoji:"🔧",text:"The thief followed pipes, avoiding the spray, to a humming box that works all day. The water moves because of me, find me and the clue you'll see.",pass:"6685"},
-{type:"crossword",emoji:"✏️",text:"The thief left a word puzzle! Solve the Easter crossword.",size:{rows:5,cols:5},words:[{word:"CANDY",row:0,col:0,dir:"across",clue:"Sweet treats you find in Easter eggs"},{word:"EGG",row:1,col:2,dir:"across",clue:"You hunt for these at Easter"},{word:"CHICK",row:0,col:0,dir:"down",clue:"A baby bird that hatches from an egg"},{word:"APRIL",row:0,col:1,dir:"down",clue:"The month Easter usually falls in"},{word:"NEST",row:0,col:2,dir:"down",clue:"Where birds keep their eggs safe"}]},
-{type:"clue",emoji:"🔨",text:"They cut, they twist, they help you mend, some hang above, some lie at end. Hung above or laid below, these helpers make the projects go. Look where hands would use them all—that's where your hidden clue will call.",pass:"1047"},
+{type:"clue",emoji:"🚧",text:"The thief escaped but couldn't flee,\nLeaving a mark near something key.\nCount five posts from the corner stone,\nYour next clue waits all alone.",pass:"2244"},
+{type:"clue",emoji:"👕",text:"Clothes may spin and clothes may dry,\nBut only one place reaches sky.\nLook outside, not in the heat —\nWhere fabric dances in the breeze so sweet.\nCheck along, don't just glance —\nSomewhere there, you'll find your chance.",pass:"7698"},
+{type:"clue",emoji:"🔧",text:"The thief followed pipes, avoiding the spray,\nTo a humming box that works all day.\nThe water moves because of me,\nFind me and the clue you'll see.",pass:"6685"},
+{type:"crossword",emoji:"✏️",text:"The thief left a word puzzle!\nSolve the Easter crossword.",size:{rows:5,cols:5},words:[{word:"CANDY",row:0,col:0,dir:"across",clue:"Sweet treats you find in Easter eggs"},{word:"EGG",row:1,col:2,dir:"across",clue:"You hunt for these at Easter"},{word:"CHICK",row:0,col:0,dir:"down",clue:"A baby bird that hatches from an egg"},{word:"APRIL",row:0,col:1,dir:"down",clue:"The month Easter usually falls in"},{word:"NEST",row:0,col:2,dir:"down",clue:"Where birds keep their eggs safe"}]},
+{type:"clue",emoji:"🔨",text:"They cut, they twist, they help you mend,\nSome hang above, some lie at end.\nHung above or laid below,\nThese helpers make the projects go.\nLook where hands would use them all —\nThat's where your hidden clue will call.",pass:"1047"},
 {type:"quiz",emoji:"🐣",text:"How many days after Ash Wednesday does Easter Sunday fall?",options:["30 days","40 days","46 days","50 days"],answer:2},
-{type:"clue",emoji:"🍖",text:"Where meals are shared, and laughter rings, the thief left something under things. Lift the edge and search around, the next clue there will be found.",pass:"3280"},
-{type:"clue",emoji:"👟",text:"Feet go in, feet go out, but the thief left a clue, no doubt. Not in socks or hats above, but where shoes line up in rows you love.",pass:"9411"},
-{type:"clue",emoji:"🌳",text:"Up in the front where sunlight streams, a leafy friend with gentle beams. Its branches stretch and sometimes sway, look beneath, your clue's at play.",pass:"7621"},
+{type:"clue",emoji:"🍖",text:"Where meals are shared, and laughter rings,\nThe thief left something under things.\nLift the edge and search around,\nThe next clue there will be found.",pass:"3280"},
+{type:"clue",emoji:"👟",text:"Feet go in, feet go out,\nBut the thief left a clue, no doubt.\nNot in socks or hats above,\nBut where shoes line up in rows you love.",pass:"9411"},
+{type:"clue",emoji:"🌳",text:"Up in the front where sunlight streams,\nA leafy friend with gentle beams.\nIts branches stretch and sometimes sway,\nLook beneath, your clue's at play.",pass:"7621"},
 {type:"quiz",emoji:"🌷",text:"Easter always falls in which season in Australia?",options:["Spring","Summer","Autumn","Winter"],answer:2},
-{type:"clue",emoji:"🎁",text:"You've solved the puzzles, found the way, the treasure waits to save the day. Not outside, but tucked away, where treats and chocolate like to stay. Everything is ready now it's true, the final spot is waiting for you! Now rearrange the letter cards to reveal where the treasure is hidden!",pass:"HYUNDAI"}];
+{type:"clue",emoji:"🎁",text:"You've solved the puzzles, found the way,\nThe treasure waits to save the day.\nNot outside, but tucked away,\nWhere treats and chocolate like to stay.\nEverything is ready now it's true,\nThe final spot is waiting for you!\n\nNow rearrange the letter cards to reveal where the treasure is hidden!",pass:"HYUNDAI"}];
 
 const game2Steps=[
-{type:"clue",emoji:"🛏️",text:"To begin where shadows creep, and sleepy heads lie down to sleep. Find where dreams begin each night, your first clue hides out of sight.",pass:"3743"},
-{type:"clue",emoji:"🚗",text:"In darkness waits a silent beast, that carries you from west to east. It sleeps indoors, away from rain, go search inside its metal frame.",pass:"1955"},
-{type:"clue",emoji:"🧵",text:"It coils like something long and sly, but brings the water, not a cry. Spin it round, but don't delay, your next clue's hiding where it stays.",pass:"2682"},
-{type:"clue",emoji:"🚙",text:"A larger beast now waits outside, with rugged wheels and strength and pride. It's parked where moonlight helps you see, look close—your clue is there to be.",pass:"8639"},
-{type:"clue",emoji:"💧",text:"Tall and quiet, dark and round, it holds what falls without a sound. Rain is where its secrets keep, check it now—but don't wake what sleeps…",pass:"0167"},
+{type:"clue",emoji:"🛏️",text:"To begin where shadows creep,\nAnd sleepy heads lie down to sleep,\nFind where dreams begin each night,\nYour first clue hides out of sight.",pass:"3743"},
+{type:"clue",emoji:"🚗",text:"In darkness waits a silent beast,\nThat carries you from west to east,\nIt sleeps indoors, away from rain,\nGo search inside its metal frame.",pass:"1955"},
+{type:"clue",emoji:"🧵",text:"It coils like something long and sly,\nBut brings the water, not a cry,\nSpin it round, but don't delay,\nYour next clue's hiding where it stays.",pass:"2682"},
+{type:"clue",emoji:"🚙",text:"A larger beast now waits outside,\nWith rugged wheels and strength and pride,\nIt's parked where moonlight helps you see,\nLook close—your clue is there to be.",pass:"8639"},
+{type:"clue",emoji:"💧",text:"Tall and quiet, dark and round,\nIt holds what falls without a sound,\nRain is where its secrets keep,\nCheck it now—but don't wake what sleeps…",pass:"0167"},
 {type:"scare",text:"Shhh… something is watching you.\n\nLook very closely at the screen…",scareEmoji:"👹"},
-{type:"clue",emoji:"🌿",text:"Where creatures crawl and night bugs fly, and leaves may rustle softly by. Shine your torch upon the ground, your next clue waits where dirt is found.",pass:"3904"},
-{type:"clue",emoji:"🚪",text:"A door that's used but not the main, where muddy shoes might leave a stain. It creaks at night (or so they say…), go find the clue without delay.",pass:"4178"},
-{type:"clue",emoji:"🧺",text:"Round and round the darkness goes, cleaning dirt from shirts and clothes. Listen close—you might just hear, a spinning sound when you are near…",pass:"8071"},
-{type:"clue",emoji:"🍽️",text:"Cold as night or filled with treats, a place that hides your favourite eats. But something else is waiting too… Open up and find your clue.",pass:"6319"},
-{type:"clue",emoji:"🍫",text:"You've walked the dark, you've been so brave, through every clue, each path you gave. Now one last place to end your quest, where Easter treats are hidden best. Not outside, but tucked away, where treats and chocolate like to stay…",pass:"8945"}];
+{type:"clue",emoji:"🌿",text:"Where creatures crawl and night bugs fly,\nAnd leaves may rustle softly by,\nShine your torch upon the ground,\nYour next clue waits where dirt is found.",pass:"3904"},
+{type:"clue",emoji:"🚪",text:"A door that's used but not the main,\nWhere muddy shoes might leave a stain,\nIt creaks at night (or so they say…),\nGo find the clue without delay.",pass:"4178"},
+{type:"clue",emoji:"🧺",text:"Round and round the darkness goes,\nCleaning dirt from shirts and clothes,\nListen close—you might just hear,\nA spinning sound when you are near…",pass:"8071"},
+{type:"clue",emoji:"🍽️",text:"Cold as night or filled with treats,\nA place that hides your favourite eats,\nBut something else is waiting too…\nOpen up and find your clue.",pass:"6319"},
+{type:"clue",emoji:"🍫",text:"You've walked the dark, you've been so brave,\nThrough every clue, each path you gave,\nNow one last place to end your quest,\nWhere Easter treats are hidden best.\nNot outside, but tucked away,\nWhere treats and chocolate like to stay…",pass:"8945"}];
 
 const gameConfigs={
- 1:{steps:game1Steps,title:"Easter Egg Hunt 🐣",victoryEmoji:"🎉🐇🎉",victoryMsg:"You recovered the treasure!",victoryDetail:"The Easter Bunny is saved! Enjoy your surprise! 🍬🍭🐰",introEmoji:"🐰💐🌷",introText:"The Easter Bunny is in trouble! Last night, a mischievous thief snuck into the yard and stole the Easter treasure. All that's left is a trail of hidden clues… and a mysterious message: \"Only the clever will find what's been taken.\" Your mission: Solve each puzzle, find the next clue, and recover the treasure before Easter ends!",dark:false},
+ 1:{steps:game1Steps,title:"Easter Egg Hunt 🐣",victoryEmoji:"🎉🐇🎉",victoryMsg:"You recovered the treasure!",victoryDetail:"The Easter Bunny is saved! Enjoy your surprise! 🍬🍭🐰",introEmoji:"🐰💐🌷",introText:"The Easter Bunny is in trouble! Last night, a mischievous thief snuck into the yard and stole the Easter treasure. All that's left is a trail of hidden clues… and a mysterious message: \"Only the clever will find what's been taken.\"<br><br>Your mission: Solve each puzzle, find the next clue, and recover the treasure before Easter ends!",dark:false},
  2:{steps:game2Steps,title:"Scary Night Easter Hunt 👻",victoryEmoji:"👻💀🎃",victoryMsg:"You survived the darkness!",victoryDetail:"The night spares you... for now... 🕷️🦇",introEmoji:"👻🌙💀",introText:"Dare to enter the darkness? The hunt begins... if you're brave enough.",dark:true}
 };
 
